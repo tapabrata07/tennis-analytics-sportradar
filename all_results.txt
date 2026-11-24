@@ -1,0 +1,1006 @@
+--------------
+USE tennis_db
+--------------
+
+--------------
+-- ================= COMPETITIONS =================
+--------------
+
+--------------
+-- 1) All competitions with category name
+--------------
+
+--------------
+SELECT c.competition_id, c.competition_name, c.type, c.gender, cat.category_name
+FROM competitions c LEFT JOIN categories cat ON c.category_id = cat.category_id
+--------------
+
++--------------------------+------------------------------+---------+--------+---------------+
+| competition_id           | competition_name             | type    | gender | category_name |
++--------------------------+------------------------------+---------+--------+---------------+
+| sample:competition:0-0   | ATP Open 1                   | singles | men    | ATP           |
+| sample:competition:0-0-0 | ATP Open 1 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-0-1 | ATP Open 1 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-0-2 | ATP Open 1 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-1   | ATP Open 2                   | singles | men    | ATP           |
+| sample:competition:0-1-0 | ATP Open 2 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-1-1 | ATP Open 2 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-1-2 | ATP Open 2 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-2   | ATP Open 3                   | singles | men    | ATP           |
+| sample:competition:0-2-0 | ATP Open 3 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-2-1 | ATP Open 3 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-2-2 | ATP Open 3 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-3   | ATP Open 4                   | singles | men    | ATP           |
+| sample:competition:0-3-0 | ATP Open 4 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-3-1 | ATP Open 4 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-3-2 | ATP Open 4 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-4   | ATP Open 5                   | singles | men    | ATP           |
+| sample:competition:0-4-0 | ATP Open 5 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-4-1 | ATP Open 5 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-4-2 | ATP Open 5 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-5   | ATP Open 6                   | singles | men    | ATP           |
+| sample:competition:0-5-0 | ATP Open 6 Qualifying        | singles | men    | ATP           |
+| sample:competition:0-5-1 | ATP Open 6 Doubles           | doubles | men    | ATP           |
+| sample:competition:0-5-2 | ATP Open 6 Doubles           | doubles | men    | ATP           |
+| sample:competition:1-0   | WTA Open 1                   | singles | women  | WTA           |
+| sample:competition:1-0-0 | WTA Open 1 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-0-1 | WTA Open 1 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-0-2 | WTA Open 1 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-1   | WTA Open 2                   | singles | women  | WTA           |
+| sample:competition:1-1-0 | WTA Open 2 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-1-1 | WTA Open 2 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-1-2 | WTA Open 2 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-2   | WTA Open 3                   | singles | women  | WTA           |
+| sample:competition:1-2-0 | WTA Open 3 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-2-1 | WTA Open 3 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-2-2 | WTA Open 3 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-3   | WTA Open 4                   | singles | women  | WTA           |
+| sample:competition:1-3-0 | WTA Open 4 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-3-1 | WTA Open 4 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-3-2 | WTA Open 4 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-4   | WTA Open 5                   | singles | women  | WTA           |
+| sample:competition:1-4-0 | WTA Open 5 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-4-1 | WTA Open 5 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-4-2 | WTA Open 5 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-5   | WTA Open 6                   | singles | women  | WTA           |
+| sample:competition:1-5-0 | WTA Open 6 Qualifying        | singles | women  | WTA           |
+| sample:competition:1-5-1 | WTA Open 6 Doubles           | doubles | women  | WTA           |
+| sample:competition:1-5-2 | WTA Open 6 Doubles           | doubles | women  | WTA           |
+| sample:competition:2-0   | ITF Men Open 1               | singles | men    | ITF Men       |
+| sample:competition:2-0-0 | ITF Men Open 1 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-0-1 | ITF Men Open 1 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-0-2 | ITF Men Open 1 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-1   | ITF Men Open 2               | singles | men    | ITF Men       |
+| sample:competition:2-1-0 | ITF Men Open 2 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-1-1 | ITF Men Open 2 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-1-2 | ITF Men Open 2 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-2   | ITF Men Open 3               | singles | men    | ITF Men       |
+| sample:competition:2-2-0 | ITF Men Open 3 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-2-1 | ITF Men Open 3 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-2-2 | ITF Men Open 3 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-3   | ITF Men Open 4               | singles | men    | ITF Men       |
+| sample:competition:2-3-0 | ITF Men Open 4 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-3-1 | ITF Men Open 4 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-3-2 | ITF Men Open 4 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-4   | ITF Men Open 5               | singles | men    | ITF Men       |
+| sample:competition:2-4-0 | ITF Men Open 5 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-4-1 | ITF Men Open 5 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-4-2 | ITF Men Open 5 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-5   | ITF Men Open 6               | singles | men    | ITF Men       |
+| sample:competition:2-5-0 | ITF Men Open 6 Qualifying    | singles | men    | ITF Men       |
+| sample:competition:2-5-1 | ITF Men Open 6 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:2-5-2 | ITF Men Open 6 Doubles       | doubles | men    | ITF Men       |
+| sample:competition:3-0   | ITF Women Open 1             | singles | women  | ITF Women     |
+| sample:competition:3-0-0 | ITF Women Open 1 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-0-1 | ITF Women Open 1 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-0-2 | ITF Women Open 1 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-1   | ITF Women Open 2             | singles | women  | ITF Women     |
+| sample:competition:3-1-0 | ITF Women Open 2 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-1-1 | ITF Women Open 2 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-1-2 | ITF Women Open 2 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-2   | ITF Women Open 3             | singles | women  | ITF Women     |
+| sample:competition:3-2-0 | ITF Women Open 3 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-2-1 | ITF Women Open 3 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-2-2 | ITF Women Open 3 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-3   | ITF Women Open 4             | singles | women  | ITF Women     |
+| sample:competition:3-3-0 | ITF Women Open 4 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-3-1 | ITF Women Open 4 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-3-2 | ITF Women Open 4 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-4   | ITF Women Open 5             | singles | women  | ITF Women     |
+| sample:competition:3-4-0 | ITF Women Open 5 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-4-1 | ITF Women Open 5 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-4-2 | ITF Women Open 5 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-5   | ITF Women Open 6             | singles | women  | ITF Women     |
+| sample:competition:3-5-0 | ITF Women Open 6 Qualifying  | singles | women  | ITF Women     |
+| sample:competition:3-5-1 | ITF Women Open 6 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:3-5-2 | ITF Women Open 6 Doubles     | doubles | women  | ITF Women     |
+| sample:competition:4-0   | Challenger Open 1            | singles | men    | Challenger    |
+| sample:competition:4-0-0 | Challenger Open 1 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-0-1 | Challenger Open 1 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-0-2 | Challenger Open 1 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-1   | Challenger Open 2            | singles | men    | Challenger    |
+| sample:competition:4-1-0 | Challenger Open 2 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-1-1 | Challenger Open 2 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-1-2 | Challenger Open 2 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-2   | Challenger Open 3            | singles | men    | Challenger    |
+| sample:competition:4-2-0 | Challenger Open 3 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-2-1 | Challenger Open 3 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-2-2 | Challenger Open 3 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-3   | Challenger Open 4            | singles | men    | Challenger    |
+| sample:competition:4-3-0 | Challenger Open 4 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-3-1 | Challenger Open 4 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-3-2 | Challenger Open 4 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-4   | Challenger Open 5            | singles | men    | Challenger    |
+| sample:competition:4-4-0 | Challenger Open 5 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-4-1 | Challenger Open 5 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-4-2 | Challenger Open 5 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-5   | Challenger Open 6            | singles | men    | Challenger    |
+| sample:competition:4-5-0 | Challenger Open 6 Qualifying | singles | men    | Challenger    |
+| sample:competition:4-5-1 | Challenger Open 6 Doubles    | doubles | men    | Challenger    |
+| sample:competition:4-5-2 | Challenger Open 6 Doubles    | doubles | men    | Challenger    |
+| sample:competition:5-0   | Davis Cup Open 1             | singles | men    | Davis Cup     |
+| sample:competition:5-0-0 | Davis Cup Open 1 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-0-1 | Davis Cup Open 1 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-0-2 | Davis Cup Open 1 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-1   | Davis Cup Open 2             | singles | men    | Davis Cup     |
+| sample:competition:5-1-0 | Davis Cup Open 2 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-1-1 | Davis Cup Open 2 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-1-2 | Davis Cup Open 2 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-2   | Davis Cup Open 3             | singles | men    | Davis Cup     |
+| sample:competition:5-2-0 | Davis Cup Open 3 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-2-1 | Davis Cup Open 3 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-2-2 | Davis Cup Open 3 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-3   | Davis Cup Open 4             | singles | men    | Davis Cup     |
+| sample:competition:5-3-0 | Davis Cup Open 4 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-3-1 | Davis Cup Open 4 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-3-2 | Davis Cup Open 4 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-4   | Davis Cup Open 5             | singles | men    | Davis Cup     |
+| sample:competition:5-4-0 | Davis Cup Open 5 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-4-1 | Davis Cup Open 5 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-4-2 | Davis Cup Open 5 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-5   | Davis Cup Open 6             | singles | men    | Davis Cup     |
+| sample:competition:5-5-0 | Davis Cup Open 6 Qualifying  | singles | men    | Davis Cup     |
+| sample:competition:5-5-1 | Davis Cup Open 6 Doubles     | doubles | men    | Davis Cup     |
+| sample:competition:5-5-2 | Davis Cup Open 6 Doubles     | doubles | men    | Davis Cup     |
++--------------------------+------------------------------+---------+--------+---------------+
+--------------
+-- 2) Number of competitions in each category
+--------------
+
+--------------
+SELECT cat.category_name, COUNT(*) AS total_competitions
+FROM competitions c JOIN categories cat ON c.category_id = cat.category_id
+GROUP BY cat.category_name ORDER BY total_competitions DESC
+--------------
+
++---------------+--------------------+
+| category_name | total_competitions |
++---------------+--------------------+
+| ATP           |                 24 |
+| WTA           |                 24 |
+| ITF Men       |                 24 |
+| ITF Women     |                 24 |
+| Challenger    |                 24 |
+| Davis Cup     |                 24 |
++---------------+--------------------+
+--------------
+-- 3) All doubles competitions
+--------------
+
+--------------
+SELECT * FROM competitions WHERE type = 'doubles'
+--------------
+
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+| competition_id           | competition_name          | parent_id              | type    | gender | category_id       |
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+| sample:competition:0-0-1 | ATP Open 1 Doubles        | sample:competition:0-0 | doubles | men    | sample:category:0 |
+| sample:competition:0-0-2 | ATP Open 1 Doubles        | sample:competition:0-0 | doubles | men    | sample:category:0 |
+| sample:competition:0-1-1 | ATP Open 2 Doubles        | sample:competition:0-1 | doubles | men    | sample:category:0 |
+| sample:competition:0-1-2 | ATP Open 2 Doubles        | sample:competition:0-1 | doubles | men    | sample:category:0 |
+| sample:competition:0-2-1 | ATP Open 3 Doubles        | sample:competition:0-2 | doubles | men    | sample:category:0 |
+| sample:competition:0-2-2 | ATP Open 3 Doubles        | sample:competition:0-2 | doubles | men    | sample:category:0 |
+| sample:competition:0-3-1 | ATP Open 4 Doubles        | sample:competition:0-3 | doubles | men    | sample:category:0 |
+| sample:competition:0-3-2 | ATP Open 4 Doubles        | sample:competition:0-3 | doubles | men    | sample:category:0 |
+| sample:competition:0-4-1 | ATP Open 5 Doubles        | sample:competition:0-4 | doubles | men    | sample:category:0 |
+| sample:competition:0-4-2 | ATP Open 5 Doubles        | sample:competition:0-4 | doubles | men    | sample:category:0 |
+| sample:competition:0-5-1 | ATP Open 6 Doubles        | sample:competition:0-5 | doubles | men    | sample:category:0 |
+| sample:competition:0-5-2 | ATP Open 6 Doubles        | sample:competition:0-5 | doubles | men    | sample:category:0 |
+| sample:competition:1-0-1 | WTA Open 1 Doubles        | sample:competition:1-0 | doubles | women  | sample:category:1 |
+| sample:competition:1-0-2 | WTA Open 1 Doubles        | sample:competition:1-0 | doubles | women  | sample:category:1 |
+| sample:competition:1-1-1 | WTA Open 2 Doubles        | sample:competition:1-1 | doubles | women  | sample:category:1 |
+| sample:competition:1-1-2 | WTA Open 2 Doubles        | sample:competition:1-1 | doubles | women  | sample:category:1 |
+| sample:competition:1-2-1 | WTA Open 3 Doubles        | sample:competition:1-2 | doubles | women  | sample:category:1 |
+| sample:competition:1-2-2 | WTA Open 3 Doubles        | sample:competition:1-2 | doubles | women  | sample:category:1 |
+| sample:competition:1-3-1 | WTA Open 4 Doubles        | sample:competition:1-3 | doubles | women  | sample:category:1 |
+| sample:competition:1-3-2 | WTA Open 4 Doubles        | sample:competition:1-3 | doubles | women  | sample:category:1 |
+| sample:competition:1-4-1 | WTA Open 5 Doubles        | sample:competition:1-4 | doubles | women  | sample:category:1 |
+| sample:competition:1-4-2 | WTA Open 5 Doubles        | sample:competition:1-4 | doubles | women  | sample:category:1 |
+| sample:competition:1-5-1 | WTA Open 6 Doubles        | sample:competition:1-5 | doubles | women  | sample:category:1 |
+| sample:competition:1-5-2 | WTA Open 6 Doubles        | sample:competition:1-5 | doubles | women  | sample:category:1 |
+| sample:competition:2-0-1 | ITF Men Open 1 Doubles    | sample:competition:2-0 | doubles | men    | sample:category:2 |
+| sample:competition:2-0-2 | ITF Men Open 1 Doubles    | sample:competition:2-0 | doubles | men    | sample:category:2 |
+| sample:competition:2-1-1 | ITF Men Open 2 Doubles    | sample:competition:2-1 | doubles | men    | sample:category:2 |
+| sample:competition:2-1-2 | ITF Men Open 2 Doubles    | sample:competition:2-1 | doubles | men    | sample:category:2 |
+| sample:competition:2-2-1 | ITF Men Open 3 Doubles    | sample:competition:2-2 | doubles | men    | sample:category:2 |
+| sample:competition:2-2-2 | ITF Men Open 3 Doubles    | sample:competition:2-2 | doubles | men    | sample:category:2 |
+| sample:competition:2-3-1 | ITF Men Open 4 Doubles    | sample:competition:2-3 | doubles | men    | sample:category:2 |
+| sample:competition:2-3-2 | ITF Men Open 4 Doubles    | sample:competition:2-3 | doubles | men    | sample:category:2 |
+| sample:competition:2-4-1 | ITF Men Open 5 Doubles    | sample:competition:2-4 | doubles | men    | sample:category:2 |
+| sample:competition:2-4-2 | ITF Men Open 5 Doubles    | sample:competition:2-4 | doubles | men    | sample:category:2 |
+| sample:competition:2-5-1 | ITF Men Open 6 Doubles    | sample:competition:2-5 | doubles | men    | sample:category:2 |
+| sample:competition:2-5-2 | ITF Men Open 6 Doubles    | sample:competition:2-5 | doubles | men    | sample:category:2 |
+| sample:competition:3-0-1 | ITF Women Open 1 Doubles  | sample:competition:3-0 | doubles | women  | sample:category:3 |
+| sample:competition:3-0-2 | ITF Women Open 1 Doubles  | sample:competition:3-0 | doubles | women  | sample:category:3 |
+| sample:competition:3-1-1 | ITF Women Open 2 Doubles  | sample:competition:3-1 | doubles | women  | sample:category:3 |
+| sample:competition:3-1-2 | ITF Women Open 2 Doubles  | sample:competition:3-1 | doubles | women  | sample:category:3 |
+| sample:competition:3-2-1 | ITF Women Open 3 Doubles  | sample:competition:3-2 | doubles | women  | sample:category:3 |
+| sample:competition:3-2-2 | ITF Women Open 3 Doubles  | sample:competition:3-2 | doubles | women  | sample:category:3 |
+| sample:competition:3-3-1 | ITF Women Open 4 Doubles  | sample:competition:3-3 | doubles | women  | sample:category:3 |
+| sample:competition:3-3-2 | ITF Women Open 4 Doubles  | sample:competition:3-3 | doubles | women  | sample:category:3 |
+| sample:competition:3-4-1 | ITF Women Open 5 Doubles  | sample:competition:3-4 | doubles | women  | sample:category:3 |
+| sample:competition:3-4-2 | ITF Women Open 5 Doubles  | sample:competition:3-4 | doubles | women  | sample:category:3 |
+| sample:competition:3-5-1 | ITF Women Open 6 Doubles  | sample:competition:3-5 | doubles | women  | sample:category:3 |
+| sample:competition:3-5-2 | ITF Women Open 6 Doubles  | sample:competition:3-5 | doubles | women  | sample:category:3 |
+| sample:competition:4-0-1 | Challenger Open 1 Doubles | sample:competition:4-0 | doubles | men    | sample:category:4 |
+| sample:competition:4-0-2 | Challenger Open 1 Doubles | sample:competition:4-0 | doubles | men    | sample:category:4 |
+| sample:competition:4-1-1 | Challenger Open 2 Doubles | sample:competition:4-1 | doubles | men    | sample:category:4 |
+| sample:competition:4-1-2 | Challenger Open 2 Doubles | sample:competition:4-1 | doubles | men    | sample:category:4 |
+| sample:competition:4-2-1 | Challenger Open 3 Doubles | sample:competition:4-2 | doubles | men    | sample:category:4 |
+| sample:competition:4-2-2 | Challenger Open 3 Doubles | sample:competition:4-2 | doubles | men    | sample:category:4 |
+| sample:competition:4-3-1 | Challenger Open 4 Doubles | sample:competition:4-3 | doubles | men    | sample:category:4 |
+| sample:competition:4-3-2 | Challenger Open 4 Doubles | sample:competition:4-3 | doubles | men    | sample:category:4 |
+| sample:competition:4-4-1 | Challenger Open 5 Doubles | sample:competition:4-4 | doubles | men    | sample:category:4 |
+| sample:competition:4-4-2 | Challenger Open 5 Doubles | sample:competition:4-4 | doubles | men    | sample:category:4 |
+| sample:competition:4-5-1 | Challenger Open 6 Doubles | sample:competition:4-5 | doubles | men    | sample:category:4 |
+| sample:competition:4-5-2 | Challenger Open 6 Doubles | sample:competition:4-5 | doubles | men    | sample:category:4 |
+| sample:competition:5-0-1 | Davis Cup Open 1 Doubles  | sample:competition:5-0 | doubles | men    | sample:category:5 |
+| sample:competition:5-0-2 | Davis Cup Open 1 Doubles  | sample:competition:5-0 | doubles | men    | sample:category:5 |
+| sample:competition:5-1-1 | Davis Cup Open 2 Doubles  | sample:competition:5-1 | doubles | men    | sample:category:5 |
+| sample:competition:5-1-2 | Davis Cup Open 2 Doubles  | sample:competition:5-1 | doubles | men    | sample:category:5 |
+| sample:competition:5-2-1 | Davis Cup Open 3 Doubles  | sample:competition:5-2 | doubles | men    | sample:category:5 |
+| sample:competition:5-2-2 | Davis Cup Open 3 Doubles  | sample:competition:5-2 | doubles | men    | sample:category:5 |
+| sample:competition:5-3-1 | Davis Cup Open 4 Doubles  | sample:competition:5-3 | doubles | men    | sample:category:5 |
+| sample:competition:5-3-2 | Davis Cup Open 4 Doubles  | sample:competition:5-3 | doubles | men    | sample:category:5 |
+| sample:competition:5-4-1 | Davis Cup Open 5 Doubles  | sample:competition:5-4 | doubles | men    | sample:category:5 |
+| sample:competition:5-4-2 | Davis Cup Open 5 Doubles  | sample:competition:5-4 | doubles | men    | sample:category:5 |
+| sample:competition:5-5-1 | Davis Cup Open 6 Doubles  | sample:competition:5-5 | doubles | men    | sample:category:5 |
+| sample:competition:5-5-2 | Davis Cup Open 6 Doubles  | sample:competition:5-5 | doubles | men    | sample:category:5 |
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+--------------
+-- 4) Competitions in a specific category (e.g., ITF Men)
+--------------
+
+--------------
+SELECT c.* FROM competitions c JOIN categories cat ON c.category_id = cat.category_id
+WHERE cat.category_name = 'ITF Men'
+--------------
+
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+| competition_id           | competition_name          | parent_id              | type    | gender | category_id       |
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+| sample:competition:2-0   | ITF Men Open 1            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-0-0 | ITF Men Open 1 Qualifying | sample:competition:2-0 | singles | men    | sample:category:2 |
+| sample:competition:2-0-1 | ITF Men Open 1 Doubles    | sample:competition:2-0 | doubles | men    | sample:category:2 |
+| sample:competition:2-0-2 | ITF Men Open 1 Doubles    | sample:competition:2-0 | doubles | men    | sample:category:2 |
+| sample:competition:2-1   | ITF Men Open 2            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-1-0 | ITF Men Open 2 Qualifying | sample:competition:2-1 | singles | men    | sample:category:2 |
+| sample:competition:2-1-1 | ITF Men Open 2 Doubles    | sample:competition:2-1 | doubles | men    | sample:category:2 |
+| sample:competition:2-1-2 | ITF Men Open 2 Doubles    | sample:competition:2-1 | doubles | men    | sample:category:2 |
+| sample:competition:2-2   | ITF Men Open 3            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-2-0 | ITF Men Open 3 Qualifying | sample:competition:2-2 | singles | men    | sample:category:2 |
+| sample:competition:2-2-1 | ITF Men Open 3 Doubles    | sample:competition:2-2 | doubles | men    | sample:category:2 |
+| sample:competition:2-2-2 | ITF Men Open 3 Doubles    | sample:competition:2-2 | doubles | men    | sample:category:2 |
+| sample:competition:2-3   | ITF Men Open 4            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-3-0 | ITF Men Open 4 Qualifying | sample:competition:2-3 | singles | men    | sample:category:2 |
+| sample:competition:2-3-1 | ITF Men Open 4 Doubles    | sample:competition:2-3 | doubles | men    | sample:category:2 |
+| sample:competition:2-3-2 | ITF Men Open 4 Doubles    | sample:competition:2-3 | doubles | men    | sample:category:2 |
+| sample:competition:2-4   | ITF Men Open 5            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-4-0 | ITF Men Open 5 Qualifying | sample:competition:2-4 | singles | men    | sample:category:2 |
+| sample:competition:2-4-1 | ITF Men Open 5 Doubles    | sample:competition:2-4 | doubles | men    | sample:category:2 |
+| sample:competition:2-4-2 | ITF Men Open 5 Doubles    | sample:competition:2-4 | doubles | men    | sample:category:2 |
+| sample:competition:2-5   | ITF Men Open 6            | NULL                   | singles | men    | sample:category:2 |
+| sample:competition:2-5-0 | ITF Men Open 6 Qualifying | sample:competition:2-5 | singles | men    | sample:category:2 |
+| sample:competition:2-5-1 | ITF Men Open 6 Doubles    | sample:competition:2-5 | doubles | men    | sample:category:2 |
+| sample:competition:2-5-2 | ITF Men Open 6 Doubles    | sample:competition:2-5 | doubles | men    | sample:category:2 |
++--------------------------+---------------------------+------------------------+---------+--------+-------------------+
+--------------
+-- 5) Parent competitions and their sub-competitions
+--------------
+
+--------------
+SELECT p.competition_name AS parent_competition, c.competition_name AS sub_competition
+FROM competitions c JOIN competitions p ON c.parent_id = p.competition_id
+ORDER BY parent_competition
+--------------
+
++--------------------+------------------------------+
+| parent_competition | sub_competition              |
++--------------------+------------------------------+
+| ATP Open 1         | ATP Open 1 Qualifying        |
+| ATP Open 1         | ATP Open 1 Doubles           |
+| ATP Open 1         | ATP Open 1 Doubles           |
+| ATP Open 2         | ATP Open 2 Qualifying        |
+| ATP Open 2         | ATP Open 2 Doubles           |
+| ATP Open 2         | ATP Open 2 Doubles           |
+| ATP Open 3         | ATP Open 3 Qualifying        |
+| ATP Open 3         | ATP Open 3 Doubles           |
+| ATP Open 3         | ATP Open 3 Doubles           |
+| ATP Open 4         | ATP Open 4 Qualifying        |
+| ATP Open 4         | ATP Open 4 Doubles           |
+| ATP Open 4         | ATP Open 4 Doubles           |
+| ATP Open 5         | ATP Open 5 Qualifying        |
+| ATP Open 5         | ATP Open 5 Doubles           |
+| ATP Open 5         | ATP Open 5 Doubles           |
+| ATP Open 6         | ATP Open 6 Qualifying        |
+| ATP Open 6         | ATP Open 6 Doubles           |
+| ATP Open 6         | ATP Open 6 Doubles           |
+| Challenger Open 1  | Challenger Open 1 Qualifying |
+| Challenger Open 1  | Challenger Open 1 Doubles    |
+| Challenger Open 1  | Challenger Open 1 Doubles    |
+| Challenger Open 2  | Challenger Open 2 Qualifying |
+| Challenger Open 2  | Challenger Open 2 Doubles    |
+| Challenger Open 2  | Challenger Open 2 Doubles    |
+| Challenger Open 3  | Challenger Open 3 Doubles    |
+| Challenger Open 3  | Challenger Open 3 Qualifying |
+| Challenger Open 3  | Challenger Open 3 Doubles    |
+| Challenger Open 4  | Challenger Open 4 Doubles    |
+| Challenger Open 4  | Challenger Open 4 Doubles    |
+| Challenger Open 4  | Challenger Open 4 Qualifying |
+| Challenger Open 5  | Challenger Open 5 Doubles    |
+| Challenger Open 5  | Challenger Open 5 Doubles    |
+| Challenger Open 5  | Challenger Open 5 Qualifying |
+| Challenger Open 6  | Challenger Open 6 Doubles    |
+| Challenger Open 6  | Challenger Open 6 Doubles    |
+| Challenger Open 6  | Challenger Open 6 Qualifying |
+| Davis Cup Open 1   | Davis Cup Open 1 Doubles     |
+| Davis Cup Open 1   | Davis Cup Open 1 Doubles     |
+| Davis Cup Open 1   | Davis Cup Open 1 Qualifying  |
+| Davis Cup Open 2   | Davis Cup Open 2 Doubles     |
+| Davis Cup Open 2   | Davis Cup Open 2 Doubles     |
+| Davis Cup Open 2   | Davis Cup Open 2 Qualifying  |
+| Davis Cup Open 3   | Davis Cup Open 3 Doubles     |
+| Davis Cup Open 3   | Davis Cup Open 3 Qualifying  |
+| Davis Cup Open 3   | Davis Cup Open 3 Doubles     |
+| Davis Cup Open 4   | Davis Cup Open 4 Qualifying  |
+| Davis Cup Open 4   | Davis Cup Open 4 Doubles     |
+| Davis Cup Open 4   | Davis Cup Open 4 Doubles     |
+| Davis Cup Open 5   | Davis Cup Open 5 Doubles     |
+| Davis Cup Open 5   | Davis Cup Open 5 Qualifying  |
+| Davis Cup Open 5   | Davis Cup Open 5 Doubles     |
+| Davis Cup Open 6   | Davis Cup Open 6 Doubles     |
+| Davis Cup Open 6   | Davis Cup Open 6 Doubles     |
+| Davis Cup Open 6   | Davis Cup Open 6 Qualifying  |
+| ITF Men Open 1     | ITF Men Open 1 Qualifying    |
+| ITF Men Open 1     | ITF Men Open 1 Doubles       |
+| ITF Men Open 1     | ITF Men Open 1 Doubles       |
+| ITF Men Open 2     | ITF Men Open 2 Qualifying    |
+| ITF Men Open 2     | ITF Men Open 2 Doubles       |
+| ITF Men Open 2     | ITF Men Open 2 Doubles       |
+| ITF Men Open 3     | ITF Men Open 3 Qualifying    |
+| ITF Men Open 3     | ITF Men Open 3 Doubles       |
+| ITF Men Open 3     | ITF Men Open 3 Doubles       |
+| ITF Men Open 4     | ITF Men Open 4 Qualifying    |
+| ITF Men Open 4     | ITF Men Open 4 Doubles       |
+| ITF Men Open 4     | ITF Men Open 4 Doubles       |
+| ITF Men Open 5     | ITF Men Open 5 Doubles       |
+| ITF Men Open 5     | ITF Men Open 5 Qualifying    |
+| ITF Men Open 5     | ITF Men Open 5 Doubles       |
+| ITF Men Open 6     | ITF Men Open 6 Doubles       |
+| ITF Men Open 6     | ITF Men Open 6 Doubles       |
+| ITF Men Open 6     | ITF Men Open 6 Qualifying    |
+| ITF Women Open 1   | ITF Women Open 1 Qualifying  |
+| ITF Women Open 1   | ITF Women Open 1 Doubles     |
+| ITF Women Open 1   | ITF Women Open 1 Doubles     |
+| ITF Women Open 2   | ITF Women Open 2 Doubles     |
+| ITF Women Open 2   | ITF Women Open 2 Doubles     |
+| ITF Women Open 2   | ITF Women Open 2 Qualifying  |
+| ITF Women Open 3   | ITF Women Open 3 Doubles     |
+| ITF Women Open 3   | ITF Women Open 3 Doubles     |
+| ITF Women Open 3   | ITF Women Open 3 Qualifying  |
+| ITF Women Open 4   | ITF Women Open 4 Doubles     |
+| ITF Women Open 4   | ITF Women Open 4 Doubles     |
+| ITF Women Open 4   | ITF Women Open 4 Qualifying  |
+| ITF Women Open 5   | ITF Women Open 5 Doubles     |
+| ITF Women Open 5   | ITF Women Open 5 Doubles     |
+| ITF Women Open 5   | ITF Women Open 5 Qualifying  |
+| ITF Women Open 6   | ITF Women Open 6 Doubles     |
+| ITF Women Open 6   | ITF Women Open 6 Qualifying  |
+| ITF Women Open 6   | ITF Women Open 6 Doubles     |
+| WTA Open 1         | WTA Open 1 Doubles           |
+| WTA Open 1         | WTA Open 1 Doubles           |
+| WTA Open 1         | WTA Open 1 Qualifying        |
+| WTA Open 2         | WTA Open 2 Doubles           |
+| WTA Open 2         | WTA Open 2 Doubles           |
+| WTA Open 2         | WTA Open 2 Qualifying        |
+| WTA Open 3         | WTA Open 3 Doubles           |
+| WTA Open 3         | WTA Open 3 Doubles           |
+| WTA Open 3         | WTA Open 3 Qualifying        |
+| WTA Open 4         | WTA Open 4 Doubles           |
+| WTA Open 4         | WTA Open 4 Doubles           |
+| WTA Open 4         | WTA Open 4 Qualifying        |
+| WTA Open 5         | WTA Open 5 Doubles           |
+| WTA Open 5         | WTA Open 5 Doubles           |
+| WTA Open 5         | WTA Open 5 Qualifying        |
+| WTA Open 6         | WTA Open 6 Doubles           |
+| WTA Open 6         | WTA Open 6 Doubles           |
+| WTA Open 6         | WTA Open 6 Qualifying        |
++--------------------+------------------------------+
+--------------
+-- 6) Distribution of competition types by category
+--------------
+
+--------------
+SELECT cat.category_name, c.type, COUNT(*) AS total
+FROM competitions c JOIN categories cat ON c.category_id = cat.category_id
+GROUP BY cat.category_name, c.type ORDER BY cat.category_name, total DESC
+--------------
+
++---------------+---------+-------+
+| category_name | type    | total |
++---------------+---------+-------+
+| ATP           | singles |    12 |
+| ATP           | doubles |    12 |
+| Challenger    | singles |    12 |
+| Challenger    | doubles |    12 |
+| Davis Cup     | singles |    12 |
+| Davis Cup     | doubles |    12 |
+| ITF Men       | singles |    12 |
+| ITF Men       | doubles |    12 |
+| ITF Women     | singles |    12 |
+| ITF Women     | doubles |    12 |
+| WTA           | singles |    12 |
+| WTA           | doubles |    12 |
++---------------+---------+-------+
+--------------
+-- 7) Top-level competitions (no parent)
+--------------
+
+--------------
+SELECT * FROM competitions WHERE parent_id IS NULL OR parent_id = ''
+--------------
+
++------------------------+-------------------+-----------+---------+--------+-------------------+
+| competition_id         | competition_name  | parent_id | type    | gender | category_id       |
++------------------------+-------------------+-----------+---------+--------+-------------------+
+| sample:competition:0-0 | ATP Open 1        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:0-1 | ATP Open 2        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:0-2 | ATP Open 3        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:0-3 | ATP Open 4        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:0-4 | ATP Open 5        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:0-5 | ATP Open 6        | NULL      | singles | men    | sample:category:0 |
+| sample:competition:1-0 | WTA Open 1        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:1-1 | WTA Open 2        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:1-2 | WTA Open 3        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:1-3 | WTA Open 4        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:1-4 | WTA Open 5        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:1-5 | WTA Open 6        | NULL      | singles | women  | sample:category:1 |
+| sample:competition:2-0 | ITF Men Open 1    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:2-1 | ITF Men Open 2    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:2-2 | ITF Men Open 3    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:2-3 | ITF Men Open 4    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:2-4 | ITF Men Open 5    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:2-5 | ITF Men Open 6    | NULL      | singles | men    | sample:category:2 |
+| sample:competition:3-0 | ITF Women Open 1  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:3-1 | ITF Women Open 2  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:3-2 | ITF Women Open 3  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:3-3 | ITF Women Open 4  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:3-4 | ITF Women Open 5  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:3-5 | ITF Women Open 6  | NULL      | singles | women  | sample:category:3 |
+| sample:competition:4-0 | Challenger Open 1 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:4-1 | Challenger Open 2 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:4-2 | Challenger Open 3 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:4-3 | Challenger Open 4 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:4-4 | Challenger Open 5 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:4-5 | Challenger Open 6 | NULL      | singles | men    | sample:category:4 |
+| sample:competition:5-0 | Davis Cup Open 1  | NULL      | singles | men    | sample:category:5 |
+| sample:competition:5-1 | Davis Cup Open 2  | NULL      | singles | men    | sample:category:5 |
+| sample:competition:5-2 | Davis Cup Open 3  | NULL      | singles | men    | sample:category:5 |
+| sample:competition:5-3 | Davis Cup Open 4  | NULL      | singles | men    | sample:category:5 |
+| sample:competition:5-4 | Davis Cup Open 5  | NULL      | singles | men    | sample:category:5 |
+| sample:competition:5-5 | Davis Cup Open 6  | NULL      | singles | men    | sample:category:5 |
++------------------------+-------------------+-----------+---------+--------+-------------------+
+--------------
+-- ================= COMPLEXES & VENUES =================
+--------------
+
+--------------
+-- 1) Venues with complex name
+--------------
+
+--------------
+SELECT v.venue_name, v.city_name, v.country_name, cx.complex_name
+FROM venues v LEFT JOIN complexes cx ON v.complex_id = cx.complex_id
+--------------
+
++-----------------------------+--------------+--------------+---------------------+
+| venue_name                  | city_name    | country_name | complex_name        |
++-----------------------------+--------------+--------------+---------------------+
+| Nacional Court 1            | Chile City   | Chile        | Nacional            |
+| Nacional Court 2            | Chile City   | Chile        | Nacional            |
+| Nacional Court 3            | Chile City   | Chile        | Nacional            |
+| Central Park Court 1        | Chile City   | Chile        | Central Park        |
+| Rod Court Complex Court 1   | India City   | India        | Rod Court Complex   |
+| Lakeside Court 1            | India City   | India        | Lakeside            |
+| Olympic Tennis Park Court 1 | France City  | France       | Olympic Tennis Park |
+| Olympic Tennis Park Court 2 | Croatia City | Croatia      | Olympic Tennis Park |
+| Olympic Tennis Park Court 3 | France City  | France       | Olympic Tennis Park |
++-----------------------------+--------------+--------------+---------------------+
+--------------
+-- 2) Venues per complex
+--------------
+
+--------------
+SELECT cx.complex_name, COUNT(v.venue_id) AS venue_count
+FROM complexes cx LEFT JOIN venues v ON v.complex_id = cx.complex_id
+GROUP BY cx.complex_id, cx.complex_name ORDER BY venue_count DESC
+--------------
+
++---------------------+-------------+
+| complex_name        | venue_count |
++---------------------+-------------+
+| Nacional            |           3 |
+| Olympic Tennis Park |           3 |
+| Central Park        |           1 |
+| Rod Court Complex   |           1 |
+| Lakeside            |           1 |
++---------------------+-------------+
+--------------
+-- 3) Venues in a specific country (e.g., Chile)
+--------------
+
+--------------
+SELECT * FROM venues WHERE country_name = 'Chile'
+--------------
+
++------------------+----------------------+------------+--------------+--------------+------------------+------------------+
+| venue_id         | venue_name           | city_name  | country_name | country_code | timezone         | complex_id       |
++------------------+----------------------+------------+--------------+--------------+------------------+------------------+
+| sample:venue:0-0 | Nacional Court 1     | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
+| sample:venue:0-1 | Nacional Court 2     | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
+| sample:venue:0-2 | Nacional Court 3     | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
+| sample:venue:1-0 | Central Park Court 1 | Chile City | Chile        | CHL          | America/Santiago | sample:complex:1 |
++------------------+----------------------+------------+--------------+--------------+------------------+------------------+
+--------------
+-- 4) Venues and timezones
+--------------
+
+--------------
+SELECT venue_name, timezone FROM venues
+--------------
+
++-----------------------------+------------------+
+| venue_name                  | timezone         |
++-----------------------------+------------------+
+| Nacional Court 1            | America/Santiago |
+| Nacional Court 2            | America/Santiago |
+| Nacional Court 3            | America/Santiago |
+| Central Park Court 1        | America/Santiago |
+| Rod Court Complex Court 1   | Asia/Kolkata     |
+| Lakeside Court 1            | Asia/Kolkata     |
+| Olympic Tennis Park Court 1 | Europe/Paris     |
+| Olympic Tennis Park Court 2 | Europe/Zagreb    |
+| Olympic Tennis Park Court 3 | Europe/Paris     |
++-----------------------------+------------------+
+--------------
+-- 5) Complexes with more than one venue
+--------------
+
+--------------
+SELECT cx.complex_name, COUNT(v.venue_id) AS venue_count
+FROM complexes cx JOIN venues v ON v.complex_id = cx.complex_id
+GROUP BY cx.complex_id, cx.complex_name HAVING COUNT(v.venue_id) > 1
+--------------
+
++---------------------+-------------+
+| complex_name        | venue_count |
++---------------------+-------------+
+| Nacional            |           3 |
+| Olympic Tennis Park |           3 |
++---------------------+-------------+
+--------------
+-- 6) Venues grouped by country
+--------------
+
+--------------
+SELECT country_name, COUNT(*) AS venue_count, GROUP_CONCAT(venue_name SEPARATOR ', ') AS venues
+FROM venues GROUP BY country_name ORDER BY venue_count DESC
+--------------
+
++--------------+-------------+----------------------------------------------------------------------------+
+| country_name | venue_count | venues                                                                     |
++--------------+-------------+----------------------------------------------------------------------------+
+| Chile        |           4 | Nacional Court 1, Nacional Court 2, Nacional Court 3, Central Park Court 1 |
+| France       |           2 | Olympic Tennis Park Court 1, Olympic Tennis Park Court 3                   |
+| India        |           2 | Rod Court Complex Court 1, Lakeside Court 1                                |
+| Croatia      |           1 | Olympic Tennis Park Court 2                                                |
++--------------+-------------+----------------------------------------------------------------------------+
+--------------
+-- 7) All venues for a specific complex (e.g., Nacional)
+--------------
+
+--------------
+SELECT v.* FROM venues v JOIN complexes cx ON v.complex_id = cx.complex_id
+WHERE cx.complex_name = 'Nacional'
+--------------
+
++------------------+------------------+------------+--------------+--------------+------------------+------------------+
+| venue_id         | venue_name       | city_name  | country_name | country_code | timezone         | complex_id       |
++------------------+------------------+------------+--------------+--------------+------------------+------------------+
+| sample:venue:0-0 | Nacional Court 1 | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
+| sample:venue:0-1 | Nacional Court 2 | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
+| sample:venue:0-2 | Nacional Court 3 | Chile City | Chile        | CHL          | America/Santiago | sample:complex:0 |
++------------------+------------------+------------+--------------+--------------+------------------+------------------+
+--------------
+-- ================= RANKINGS =================
+--------------
+
+--------------
+-- 1) Competitors with rank and points
+--------------
+
+--------------
+SELECT c.name, c.country, r.`rank`, r.points
+FROM competitor_rankings r JOIN competitors c ON r.competitor_id = c.competitor_id
+ORDER BY r.`rank`
+--------------
+
++-------------------+---------------+------+--------+
+| name              | country       | rank | points |
++-------------------+---------------+------+--------+
+| Sample Player 1   | Croatia       |    1 |   8926 |
+| Sample Player 2   | Argentina     |    2 |   8879 |
+| Sample Player 3   | United States |    3 |   8856 |
+| Sample Player 4   | Brazil        |    4 |   8753 |
+| Sample Player 5   | India         |    5 |   8705 |
+| Sample Player 6   | Spain         |    6 |   8685 |
+| Sample Player 7   | Australia     |    7 |   8622 |
+| Sample Player 8   | France        |    8 |   8505 |
+| Sample Player 9   | Chile         |    9 |   8437 |
+| Sample Player 10  | Australia     |   10 |   8340 |
+| Sample Player 11  | India         |   11 |   8227 |
+| Sample Player 12  | Chile         |   12 |   8159 |
+| Sample Player 13  | Germany       |   13 |   8059 |
+| Sample Player 14  | Argentina     |   14 |   7966 |
+| Sample Player 15  | El Salvador   |   15 |   7941 |
+| Sample Player 16  | Argentina     |   16 |   7911 |
+| Sample Player 17  | Australia     |   17 |   7843 |
+| Sample Player 18  | Spain         |   18 |   7777 |
+| Sample Player 19  | El Salvador   |   19 |   7731 |
+| Sample Player 20  | El Salvador   |   20 |   7624 |
+| Sample Player 21  | Spain         |   21 |   7523 |
+| Sample Player 22  | India         |   22 |   7483 |
+| Sample Player 23  | Brazil        |   23 |   7382 |
+| Sample Player 24  | France        |   24 |   7275 |
+| Sample Player 25  | Croatia       |   25 |   7226 |
+| Sample Player 26  | Australia     |   26 |   7155 |
+| Sample Player 27  | Brazil        |   27 |   7063 |
+| Sample Player 28  | India         |   28 |   6960 |
+| Sample Player 29  | Spain         |   29 |   6882 |
+| Sample Player 30  | Brazil        |   30 |   6831 |
+| Sample Player 31  | Brazil        |   31 |   6778 |
+| Sample Player 32  | Italy         |   32 |   6684 |
+| Sample Player 33  | United States |   33 |   6647 |
+| Sample Player 34  | Croatia       |   34 |   6531 |
+| Sample Player 35  | El Salvador   |   35 |   6492 |
+| Sample Player 36  | Germany       |   36 |   6418 |
+| Sample Player 37  | Germany       |   37 |   6350 |
+| Sample Player 38  | United States |   38 |   6298 |
+| Sample Player 39  | Brazil        |   39 |   6191 |
+| Sample Player 40  | Australia     |   40 |   6103 |
+| Sample Player 41  | Chile         |   41 |   6040 |
+| Sample Player 42  | India         |   42 |   6000 |
+| Sample Player 43  | Spain         |   43 |   5916 |
+| Sample Player 44  | Australia     |   44 |   5816 |
+| Sample Player 45  | Germany       |   45 |   5732 |
+| Sample Player 46  | Spain         |   46 |   5665 |
+| Sample Player 47  | Germany       |   47 |   5645 |
+| Sample Player 48  | Chile         |   48 |   5623 |
+| Sample Player 49  | Croatia       |   49 |   5573 |
+| Sample Player 50  | Chile         |   50 |   5543 |
+| Sample Player 51  | United States |   51 |   5515 |
+| Sample Player 52  | El Salvador   |   52 |   5479 |
+| Sample Player 53  | Australia     |   53 |   5438 |
+| Sample Player 54  | Argentina     |   54 |   5364 |
+| Sample Player 55  | Brazil        |   55 |   5319 |
+| Sample Player 56  | El Salvador   |   56 |   5214 |
+| Sample Player 57  | India         |   57 |   5128 |
+| Sample Player 58  | Chile         |   58 |   5080 |
+| Sample Player 59  | United States |   59 |   4985 |
+| Sample Player 60  | Croatia       |   60 |   4937 |
+| Sample Player 61  | Croatia       |   61 |   4837 |
+| Sample Player 62  | France        |   62 |   4813 |
+| Sample Player 63  | Australia     |   63 |   4763 |
+| Sample Player 64  | United States |   64 |   4716 |
+| Sample Player 65  | India         |   65 |   4623 |
+| Sample Player 66  | Argentina     |   66 |   4551 |
+| Sample Player 67  | Italy         |   67 |   4447 |
+| Sample Player 68  | India         |   68 |   4375 |
+| Sample Player 69  | El Salvador   |   69 |   4269 |
+| Sample Player 70  | Italy         |   70 |   4242 |
+| Sample Player 71  | Argentina     |   71 |   4209 |
+| Sample Player 72  | India         |   72 |   4121 |
+| Sample Player 73  | Australia     |   73 |   4078 |
+| Sample Player 74  | India         |   74 |   4049 |
+| Sample Player 75  | Croatia       |   75 |   4017 |
+| Sample Player 76  | Chile         |   76 |   3996 |
+| Sample Player 77  | Italy         |   77 |   3955 |
+| Sample Player 78  | Italy         |   78 |   3908 |
+| Sample Player 79  | Croatia       |   79 |   3840 |
+| Sample Player 80  | India         |   80 |   3720 |
+| Sample Player 81  | Brazil        |   81 |   3611 |
+| Sample Player 82  | Brazil        |   82 |   3507 |
+| Sample Player 83  | Australia     |   83 |   3463 |
+| Sample Player 84  | Brazil        |   84 |   3369 |
+| Sample Player 85  | France        |   85 |   3254 |
+| Sample Player 86  | India         |   86 |   3160 |
+| Sample Player 87  | Croatia       |   87 |   3120 |
+| Sample Player 88  | Chile         |   88 |   3077 |
+| Sample Player 89  | Argentina     |   89 |   2971 |
+| Sample Player 90  | Argentina     |   90 |   2879 |
+| Sample Player 91  | Germany       |   91 |   2854 |
+| Sample Player 92  | Germany       |   92 |   2750 |
+| Sample Player 93  | Australia     |   93 |   2690 |
+| Sample Player 94  | France        |   94 |   2579 |
+| Sample Player 95  | Spain         |   95 |   2509 |
+| Sample Player 96  | India         |   96 |   2451 |
+| Sample Player 97  | India         |   97 |   2430 |
+| Sample Player 98  | Chile         |   98 |   2398 |
+| Sample Player 99  | Australia     |   99 |   2314 |
+| Sample Player 100 | Argentina     |  100 |   2286 |
+| Sample Player 101 | India         |  101 |   2246 |
+| Sample Player 102 | Australia     |  102 |   2136 |
+| Sample Player 103 | Croatia       |  103 |   2049 |
+| Sample Player 104 | El Salvador   |  104 |   1991 |
+| Sample Player 105 | Chile         |  105 |   1938 |
+| Sample Player 106 | Australia     |  106 |   1899 |
+| Sample Player 107 | Brazil        |  107 |   1853 |
+| Sample Player 108 | El Salvador   |  108 |   1746 |
+| Sample Player 109 | India         |  109 |   1662 |
+| Sample Player 110 | El Salvador   |  110 |   1631 |
+| Sample Player 111 | Croatia       |  111 |   1606 |
+| Sample Player 112 | Australia     |  112 |   1505 |
+| Sample Player 113 | Brazil        |  113 |   1415 |
+| Sample Player 114 | Chile         |  114 |   1394 |
+| Sample Player 115 | United States |  115 |   1355 |
+| Sample Player 116 | United States |  116 |   1261 |
+| Sample Player 117 | Croatia       |  117 |   1225 |
+| Sample Player 118 | France        |  118 |   1200 |
+| Sample Player 119 | El Salvador   |  119 |   1149 |
+| Sample Player 120 | United States |  120 |   1030 |
+| Sample Player 121 | Brazil        |  121 |    931 |
+| Sample Player 122 | Spain         |  122 |    891 |
+| Sample Player 123 | Brazil        |  123 |    849 |
+| Sample Player 124 | Brazil        |  124 |    744 |
+| Sample Player 125 | Spain         |  125 |    690 |
+| Sample Player 126 | Italy         |  126 |    657 |
+| Sample Player 127 | Argentina     |  127 |    577 |
+| Sample Player 128 | Australia     |  128 |    513 |
+| Sample Player 129 | Croatia       |  129 |    465 |
+| Sample Player 130 | France        |  130 |    394 |
+| Sample Player 131 | Australia     |  131 |    276 |
+| Sample Player 132 | Italy         |  132 |    191 |
+| Sample Player 133 | Croatia       |  133 |    129 |
+| Sample Player 134 | Germany       |  134 |     87 |
+| Sample Player 135 | Germany       |  135 |     54 |
+| Sample Player 136 | France        |  136 |     50 |
+| Sample Player 137 | Chile         |  137 |     50 |
+| Sample Player 138 | Australia     |  138 |     50 |
+| Sample Player 139 | Croatia       |  139 |     50 |
+| Sample Player 140 | Brazil        |  140 |     50 |
+| Sample Player 141 | France        |  141 |     50 |
+| Sample Player 142 | France        |  142 |     50 |
+| Sample Player 143 | Chile         |  143 |     50 |
+| Sample Player 144 | Australia     |  144 |     50 |
+| Sample Player 145 | Italy         |  145 |     50 |
+| Sample Player 146 | Spain         |  146 |     50 |
+| Sample Player 147 | Italy         |  147 |     50 |
+| Sample Player 148 | Germany       |  148 |     50 |
+| Sample Player 149 | Croatia       |  149 |     50 |
+| Sample Player 150 | Italy         |  150 |     50 |
+| Sample Player 151 | El Salvador   |  151 |     50 |
+| Sample Player 152 | India         |  152 |     50 |
+| Sample Player 153 | India         |  153 |     50 |
+| Sample Player 154 | Chile         |  154 |     50 |
+| Sample Player 155 | El Salvador   |  155 |     50 |
+| Sample Player 156 | Argentina     |  156 |     50 |
+| Sample Player 157 | Argentina     |  157 |     50 |
+| Sample Player 158 | Argentina     |  158 |     50 |
+| Sample Player 159 | Chile         |  159 |     50 |
+| Sample Player 160 | Germany       |  160 |     50 |
+| Sample Player 161 | Italy         |  161 |     50 |
+| Sample Player 162 | Spain         |  162 |     50 |
+| Sample Player 163 | Chile         |  163 |     50 |
+| Sample Player 164 | Spain         |  164 |     50 |
+| Sample Player 165 | India         |  165 |     50 |
+| Sample Player 166 | Chile         |  166 |     50 |
+| Sample Player 167 | El Salvador   |  167 |     50 |
+| Sample Player 168 | France        |  168 |     50 |
+| Sample Player 169 | Brazil        |  169 |     50 |
+| Sample Player 170 | India         |  170 |     50 |
+| Sample Player 171 | Australia     |  171 |     50 |
+| Sample Player 172 | Australia     |  172 |     50 |
+| Sample Player 173 | El Salvador   |  173 |     50 |
+| Sample Player 174 | Chile         |  174 |     50 |
+| Sample Player 175 | Australia     |  175 |     50 |
+| Sample Player 176 | Chile         |  176 |     50 |
+| Sample Player 177 | Italy         |  177 |     50 |
+| Sample Player 178 | Argentina     |  178 |     50 |
+| Sample Player 179 | France        |  179 |     50 |
+| Sample Player 180 | Croatia       |  180 |     50 |
+| Sample Player 181 | Germany       |  181 |     50 |
+| Sample Player 182 | Germany       |  182 |     50 |
+| Sample Player 183 | France        |  183 |     50 |
+| Sample Player 184 | United States |  184 |     50 |
+| Sample Player 185 | Argentina     |  185 |     50 |
+| Sample Player 186 | Italy         |  186 |     50 |
+| Sample Player 187 | France        |  187 |     50 |
+| Sample Player 188 | Brazil        |  188 |     50 |
+| Sample Player 189 | Germany       |  189 |     50 |
+| Sample Player 190 | Germany       |  190 |     50 |
+| Sample Player 191 | Chile         |  191 |     50 |
+| Sample Player 192 | India         |  192 |     50 |
+| Sample Player 193 | Italy         |  193 |     50 |
+| Sample Player 194 | France        |  194 |     50 |
+| Sample Player 195 | Italy         |  195 |     50 |
+| Sample Player 196 | Croatia       |  196 |     50 |
+| Sample Player 197 | France        |  197 |     50 |
+| Sample Player 198 | El Salvador   |  198 |     50 |
+| Sample Player 199 | Argentina     |  199 |     50 |
+| Sample Player 200 | Spain         |  200 |     50 |
++-------------------+---------------+------+--------+
+--------------
+-- 2) Top 5 ranked competitors
+--------------
+
+--------------
+SELECT c.name, c.country, r.`rank`, r.points
+FROM competitor_rankings r JOIN competitors c ON r.competitor_id = c.competitor_id
+WHERE r.`rank` <= 5 ORDER BY r.`rank`
+--------------
+
++-----------------+---------------+------+--------+
+| name            | country       | rank | points |
++-----------------+---------------+------+--------+
+| Sample Player 1 | Croatia       |    1 |   8926 |
+| Sample Player 2 | Argentina     |    2 |   8879 |
+| Sample Player 3 | United States |    3 |   8856 |
+| Sample Player 4 | Brazil        |    4 |   8753 |
+| Sample Player 5 | India         |    5 |   8705 |
++-----------------+---------------+------+--------+
+--------------
+-- 3) Stable rank (no movement)
+--------------
+
+--------------
+SELECT c.name, c.country, r.`rank`
+FROM competitor_rankings r JOIN competitors c ON r.competitor_id = c.competitor_id
+WHERE r.movement = 0 ORDER BY r.`rank`
+--------------
+
++-------------------+---------------+------+
+| name              | country       | rank |
++-------------------+---------------+------+
+| Sample Player 1   | Croatia       |    1 |
+| Sample Player 3   | United States |    3 |
+| Sample Player 7   | Australia     |    7 |
+| Sample Player 8   | France        |    8 |
+| Sample Player 15  | El Salvador   |   15 |
+| Sample Player 20  | El Salvador   |   20 |
+| Sample Player 26  | Australia     |   26 |
+| Sample Player 35  | El Salvador   |   35 |
+| Sample Player 36  | Germany       |   36 |
+| Sample Player 39  | Brazil        |   39 |
+| Sample Player 42  | India         |   42 |
+| Sample Player 45  | Germany       |   45 |
+| Sample Player 49  | Croatia       |   49 |
+| Sample Player 57  | India         |   57 |
+| Sample Player 59  | United States |   59 |
+| Sample Player 60  | Croatia       |   60 |
+| Sample Player 61  | Croatia       |   61 |
+| Sample Player 62  | France        |   62 |
+| Sample Player 64  | United States |   64 |
+| Sample Player 65  | India         |   65 |
+| Sample Player 66  | Argentina     |   66 |
+| Sample Player 71  | Argentina     |   71 |
+| Sample Player 72  | India         |   72 |
+| Sample Player 78  | Italy         |   78 |
+| Sample Player 83  | Australia     |   83 |
+| Sample Player 85  | France        |   85 |
+| Sample Player 91  | Germany       |   91 |
+| Sample Player 93  | Australia     |   93 |
+| Sample Player 94  | France        |   94 |
+| Sample Player 99  | Australia     |   99 |
+| Sample Player 104 | El Salvador   |  104 |
+| Sample Player 105 | Chile         |  105 |
+| Sample Player 112 | Australia     |  112 |
+| Sample Player 114 | Chile         |  114 |
+| Sample Player 115 | United States |  115 |
+| Sample Player 116 | United States |  116 |
+| Sample Player 118 | France        |  118 |
+| Sample Player 119 | El Salvador   |  119 |
+| Sample Player 121 | Brazil        |  121 |
+| Sample Player 127 | Argentina     |  127 |
+| Sample Player 133 | Croatia       |  133 |
+| Sample Player 138 | Australia     |  138 |
+| Sample Player 146 | Spain         |  146 |
+| Sample Player 157 | Argentina     |  157 |
+| Sample Player 160 | Germany       |  160 |
+| Sample Player 165 | India         |  165 |
+| Sample Player 170 | India         |  170 |
+| Sample Player 173 | El Salvador   |  173 |
+| Sample Player 176 | Chile         |  176 |
+| Sample Player 178 | Argentina     |  178 |
+| Sample Player 180 | Croatia       |  180 |
+| Sample Player 188 | Brazil        |  188 |
+| Sample Player 192 | India         |  192 |
+| Sample Player 197 | France        |  197 |
+| Sample Player 198 | El Salvador   |  198 |
+| Sample Player 200 | Spain         |  200 |
++-------------------+---------------+------+
+--------------
+-- 4) Total points from a specific country (e.g., Croatia)
+--------------
+
+--------------
+SELECT c.country, SUM(r.points) AS total_points
+FROM competitor_rankings r JOIN competitors c ON r.competitor_id = c.competitor_id
+WHERE c.country = 'Croatia' GROUP BY c.country
+--------------
+
++---------+--------------+
+| country | total_points |
++---------+--------------+
+| Croatia |        54681 |
++---------+--------------+
+--------------
+-- 5) Competitors per country
+--------------
+
+--------------
+SELECT country, COUNT(*) AS competitor_count
+FROM competitors GROUP BY country ORDER BY competitor_count DESC
+--------------
+
++---------------+------------------+
+| country       | competitor_count |
++---------------+------------------+
+| Australia     |               22 |
+| India         |               21 |
+| Chile         |               20 |
+| Brazil        |               18 |
+| Croatia       |               18 |
+| Argentina     |               16 |
+| El Salvador   |               16 |
+| France        |               16 |
+| Germany       |               15 |
+| Italy         |               15 |
+| Spain         |               13 |
+| United States |               10 |
++---------------+------------------+
+--------------
+-- 6) Highest points in the current (latest) week
+--------------
+
+--------------
+SELECT c.name, c.country, r.points, r.year, r.week
+FROM competitor_rankings r JOIN competitors c ON r.competitor_id = c.competitor_id
+WHERE (r.year, r.week) = (SELECT year, week FROM competitor_rankings
+                          ORDER BY year DESC, week DESC LIMIT 1)
+ORDER BY r.points DESC LIMIT 10
+--------------
+
++------------------+---------------+--------+------+------+
+| name             | country       | points | year | week |
++------------------+---------------+--------+------+------+
+| Sample Player 1  | Croatia       |   8926 | 2026 |   47 |
+| Sample Player 2  | Argentina     |   8879 | 2026 |   47 |
+| Sample Player 3  | United States |   8856 | 2026 |   47 |
+| Sample Player 4  | Brazil        |   8753 | 2026 |   47 |
+| Sample Player 5  | India         |   8705 | 2026 |   47 |
+| Sample Player 6  | Spain         |   8685 | 2026 |   47 |
+| Sample Player 7  | Australia     |   8622 | 2026 |   47 |
+| Sample Player 8  | France        |   8505 | 2026 |   47 |
+| Sample Player 9  | Chile         |   8437 | 2026 |   47 |
+| Sample Player 10 | Australia     |   8340 | 2026 |   47 |
++------------------+---------------+--------+------+------+
