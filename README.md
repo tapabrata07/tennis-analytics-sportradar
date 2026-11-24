@@ -12,7 +12,9 @@ Pipeline: Sportradar Tennis v3 API -> Python (parse/flatten JSON) -> MySQL -> St
    export SPORTRADAR_API_KEY=your_key
    export DB_URL="mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/tennis_db"
    ```
-5. Load data: `python extract.py`
+5. 5. Load data:
+   - Real data: `python extract.py` (needs a working API key and network connection)
+   - Sample data (used in this submission): `python load_sample_data.py`
 6. Run app: `streamlit run app.py`
 
 ## Files
