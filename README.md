@@ -1,6 +1,7 @@
 # Game Analytics: Unlocking Tennis Data with SportRadar API
 
 Pipeline: Sportradar Tennis v3 API -> Python (parse/flatten JSON) -> MySQL -> Streamlit dashboard.
+> **Data note:** The Sportradar API connection (api.sportradar.com) was blocked or reset on my network during development, so the database in this submission is filled with **synthetic sample data** using `load_sample_data.py`. The sample data uses the same JSON structure as the API and goes through the same parsing and loading code. `extract.py` is the real extraction script and has not yet been run successfully against the live API. Names such as "Sample Player" are fictional. Once the connection works, running `python extract.py` replaces the sample data with real data.
 
 ## Setup
 1. `pip install -r requirements.txt`
