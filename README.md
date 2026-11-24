@@ -17,11 +17,25 @@ Pipeline: Sportradar Tennis v3 API -> Python (parse/flatten JSON) -> MySQL -> St
    - Sample data (used in this submission): `python load_sample_data.py`
 6. Run app: `streamlit run app.py`
 
+
 ## Files
 - `schema.sql` - tables, keys, indexes
 - `extract.py` - API calls (retry + rate-limit handling), JSON flattening, transactional upsert
 - `queries.sql` - all required SQL queries (competitions, venues, rankings)
 - `app.py` - Streamlit app (dashboard, search/filter, details, country analysis, leaderboards, explorer, SQL runner)
+## Screenshots (sample data)
 
+| Page | Screenshot |
+|---|---|
+| Home Dashboard | ![Home](01_home_dashboard.png) |
+| Search & Filter | ![Search](02_search_filter.png) |
+| Competitor Details | ![Details](03_competitor_details.png) |
+| Country Analysis | ![Country](04_country_analysis.png) |
+| Leaderboards | ![Leaderboards](05_leaderboards.png) |
+| Competitions Explorer | ![Explorer](06_competitions_explorer.png) |
+| Venues & Complexes | ![Venues](07_venues_complexes.png) |
+| SQL Query Runner | ![Runner](08_sql_query_runner.png) |
+
+The SQL query outputs are in `all_results.txt`.
 ## Schema notes
 Follows the brief. `competitor_rankings` also stores ranking_type, year, week and gender so the app can filter by week.
